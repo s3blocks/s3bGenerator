@@ -192,7 +192,7 @@
         blockcode: 'when I start as clone'
     },
     control_create_clone_of: {
-        blockcode: 'create clone of %m'
+        blockcode: 'create clone of %r'
     },
     control_create_clone_of_menu: {
         blockcode: ''
@@ -273,7 +273,7 @@
         blockcode: 'reset timer'
     },
     sensing_of: {
-        blockcode: '%m of %m :sensing'
+        blockcode: '%m of %r :sensing'
     },
     sensing_of_object_menu: {
         blockcode: ''
