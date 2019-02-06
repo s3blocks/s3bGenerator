@@ -150,7 +150,7 @@
         blockcode: 'when this sprite clicked'
     },
     event_whenbackdropswitchesto: {
-        blockcode: 'when backdrop switches to %r'
+        blockcode: 'when backdrop switches to %m'
     },
     event_whengreaterthan: {
         blockcode: 'when %m > %n'
