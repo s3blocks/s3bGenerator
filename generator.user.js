@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blockify Scratch 3.0
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @author       NitroCipher
 // @match        https://scratch.mit.edu/blockify*
@@ -35,45 +35,60 @@
             sources: project.targets.map((stuff, index) => {
                 return {
                     name: stuff["name"],
-                    blocks: getBlocks(stuff["blocks"])
+                    blocks: getBlocks(stuff["blocks"]),
                 }
             })
         }
         $(".box-content").css("text-align", "left");
         $(".box-content").css("padding-left", "50px");
-        $(".box-content").html("<pre>" + js_beautify(JSON.stringify(simpleProject)) + "</pre>");
+        //$(".box-content").html("<pre>" + js_beautify(JSON.stringify(simpleProject)) + "</pre>");
+        $(".box-content").html("<pre>" + js_beautify(JSON.stringify(project)) + "<pre>");
         //$(".box-content").html("<pre>" + derpyList + "</pre>");
         //$(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
-        //$(".box-content").html("<pre>" + derpyList + "</pre>");
+        $(".box-content").html("<pre>" + derpyList + "</pre>");
         window.open("https://s3blocks.github.io/#" + encodeURI(derpyList))
     });
 
     function getBlocks(blocks) {
         document.pro = blocks;
         var blockData = [];
-        for(var item in blocks) {
+        for(var blockNum in blocks) {
             blockData.push({
-                opcode: blocks[item].opcode
+                opcode: blocks[blockNum].opcode,
+                parent: blocks[blockNum].parent
             });
-            //derpyList += "'" + blocks[item].opcode + "': 'value',";
-            var thing = blocks[item].opcode;
+
+            var thing = blocks[blockNum].opcode;
             //alert(thing);
             if (blockMap.hasOwnProperty(thing)) {
                 var blockCode = blockMap[thing].blockcode
                 blockCode = blockCode.split(" ");
+                var input = 0;
+                var field = 0;
                 blockCode.forEach(function(item, index) {
                     switch (item) {
                         default:
                             blockCode[index] = blockCode[index];
                             break;
                         case "%n":
-                            blockCode[index] = "()";
+                            blockCode[index] = "(" +blocks[blockNum].inputs[ Object.keys(blocks[blockNum].inputs)[input] ][1][1]+ ")";
+                            input++;
+                            break;
+                        case "%c":
+                            blockCode[index] = "[" +blocks[blockNum].inputs[ Object.keys(blocks[blockNum].inputs)[input] ][1][1]+ "]";
+                            input++;
                             break;
                         case "%s":
-                            blockCode[index] = "[]";
+                            blockCode[index] = "[" +blocks[blockNum].inputs[ Object.keys(blocks[blockNum].inputs)[input] ][1][1]+ "]";
+                            input++;
+                            break;
+                        case "%r":
+                            blockCode[index] = "(" +blocks[blockNum].inputs[ Object.keys(blocks[blockNum].inputs)[input] ][0]+ " v)";
+                            input++;
                             break;
                         case "%m":
-                            blockCode[index] = "[ v]";
+                            blockCode[index] = "[" +blocks[blockNum].fields[ Object.keys(blocks[blockNum].fields)[field] ][0]+ " v]";
+                            field++;
                             break;
                         case "%b":
                             blockCode[index] = "<>";
@@ -82,6 +97,7 @@
                             blockCode[index] = "\nend";
                             break;
                     }
+
                 });
                 derpyList += blockCode.join(" ") + "\n";
             }
