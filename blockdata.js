@@ -90,10 +90,10 @@
         blockcode: 'set size to %n'
     },
     looks_changeeffectby: {
-        blockcode: 'change %m effect by %n'
+        blockcode: 'change %m effect by %n ::looks'
     },
     looks_seteffectto: {
-        blockcode: 'set %m effect to %n'
+        blockcode: 'set %m effect to %n ::looks'
     },
     looks_cleargraphiceffects: {
         blockcode: 'clear graphics effects'
@@ -111,285 +111,285 @@
         blockcode: 'go %m %n layers'
     },
     sound_playuntildone: {
-        blockcode: 'play %m until done'
+        blockcode: 'play sound %m until done'
     },
     sound_sounds_menu: {
-        blockcode: 'value'
+        blockcode: ''
     },
     sound_play: {
-        blockcode: 'value'
+        blockcode: 'start sound %m'
     },
     sound_sounds_menu: {
-        blockcode: 'value'
+        blockcode: ''
     },
     sound_stopallsounds: {
-        blockcode: 'value'
+        blockcode: 'stop all sounds'
     },
     sound_changeeffectby: {
-        blockcode: 'value'
+        blockcode: 'change %m effect by %n ::sound'
     },
     sound_seteffectto: {
-        blockcode: 'value'
+        blockcode: 'set %m effect to %n ::sound'
     },
     sound_cleareffects: {
-        blockcode: 'value'
+        blockcode: 'clear sound effects'
     },
     sound_changevolumeby: {
-        blockcode: 'value'
+        blockcode: 'change volume by %n'
     },
     sound_setvolumeto: {
-        blockcode: 'value'
+        blockcode: 'set volume to %n'
     },
     event_whenflagclicked: {
-        blockcode: 'value'
+        blockcode: 'when gf clicked'
     },
     event_whenkeypressed: {
-        blockcode: 'value'
+        blockcode: 'when %m key pressed'
     },
     event_whenthisspriteclicked: {
-        blockcode: 'value'
+        blockcode: 'when this sprite clicked'
     },
     event_whenbackdropswitchesto: {
-        blockcode: 'value'
+        blockcode: 'when backdrop switches to %m'
     },
     event_whengreaterthan: {
-        blockcode: 'value'
+        blockcode: 'when %m > %n'
     },
     event_whenbroadcastreceived: {
-        blockcode: 'value'
+        blockcode: 'when i receive %m'
     },
     event_broadcast: {
-        blockcode: 'value'
+        blockcode: 'broadcast %m'
     },
     event_broadcastandwait: {
-        blockcode: 'value'
+        blockcode: 'broadcast %m and wait'
     },
     control_wait: {
-        blockcode: 'value'
+        blockcode: 'wait %n seconds'
     },
     control_repeat: {
-        blockcode: 'value'
+        blockcode: 'repeat %n {}'
     },
     control_forever: {
-        blockcode: 'value'
+        blockcode: 'forever {}'
     },
     control_if: {
-        blockcode: 'value'
+        blockcode: 'if %b then {}'
     },
     control_if_else: {
-        blockcode: 'value'
+        blockcode: 'if %b then {} else {}'
     },
     control_wait_until: {
-        blockcode: 'value'
+        blockcode: 'wait until %b'
     },
     control_repeat_until: {
-        blockcode: 'value'
+        blockcode: 'repeat until %b {}'
     },
     control_stop: {
-        blockcode: 'value'
+        blockcode: 'stop %m'
     },
     control_start_as_clone: {
-        blockcode: 'value'
+        blockcode: 'when I start as clone'
     },
     control_create_clone_of: {
-        blockcode: 'value'
+        blockcode: 'create clone of %m'
     },
     control_create_clone_of_menu: {
-        blockcode: 'value'
+        blockcode: ''
     },
     control_delete_this_clone: {
-        blockcode: 'value'
+        blockcode: 'delete this clone'
     },
     motion_xposition: {
-        blockcode: 'value'
+        blockcode: 'x position'
     },
     motion_yposition: {
-        blockcode: 'value'
+        blockcode: 'y position'
     },
     motion_direction: {
-        blockcode: 'value'
+        blockcode: 'direction'
     },
     looks_costumenumbername: {
-        blockcode: 'value'
+        blockcode: 'costume %m'
     },
     looks_backdropnumbername: {
-        blockcode: 'value'
+        blockcode: 'backdrop %m'
     },
     looks_size: {
-        blockcode: 'value'
+        blockcode: 'size'
     },
     sound_volume: {
-        blockcode: 'value'
+        blockcode: 'volume'
     },
     sensing_touchingobject: {
-        blockcode: 'value'
+        blockcode: 'touching %m ?'
     },
     sensing_touchingobjectmenu: {
-        blockcode: 'value'
+        blockcode: ''
     },
     sensing_touchingcolor: {
-        blockcode: 'value'
+        blockcode: 'touching color %c ?'
     },
     sensing_coloristouchingcolor: {
-        blockcode: 'value'
+        blockcode: 'color %c is touching %c ?'
     },
     sensing_distanceto: {
-        blockcode: 'value'
+        blockcode: 'distance to %m'
     },
     sensing_distancetomenu: {
-        blockcode: 'value'
+        blockcode: ''
     },
     sensing_askandwait: {
-        blockcode: 'value'
+        blockcode: 'ask %s and wait'
     },
     sensing_answer: {
-        blockcode: 'value'
+        blockcode: 'answer'
     },
     sensing_keypressed: {
-        blockcode: 'value'
+        blockcode: 'key %m pressed?'
     },
     sensing_keyoptions: {
-        blockcode: 'value'
+        blockcode: ''
     },
     sensing_mousedown: {
-        blockcode: 'value'
+        blockcode: 'mouse down?'
     },
     sensing_mousex: {
-        blockcode: 'value'
+        blockcode: 'mouse x'
     },
     sensing_mousey: {
-        blockcode: 'value'
+        blockcode: 'mouse y'
     },
     sensing_setdragmode: {
-        blockcode: 'value'
+        blockcode: 'set drag mode %m'
     },
     sensing_loudness: {
-        blockcode: 'value'
+        blockcode: 'loudness'
     },
     sensing_timer: {
-        blockcode: 'value'
+        blockcode: 'timer'
     },
     sensing_resettimer: {
-        blockcode: 'value'
+        blockcode: 'reset timer'
     },
     sensing_of: {
-        blockcode: 'value'
+        blockcode: '%m of %m :sensing'
     },
     sensing_of_object_menu: {
-        blockcode: 'value'
+        blockcode: ''
     },
     sensing_current: {
-        blockcode: 'value'
+        blockcode: 'current %m'
     },
     sensing_dayssince2000: {
-        blockcode: 'value'
+        blockcode: 'days since 2000'
     },
     sensing_username: {
-        blockcode: 'value'
+        blockcode: 'username'
     },
     operator_add: {
-        blockcode: 'value'
+        blockcode: '%n + %n'
     },
     operator_subtract: {
-        blockcode: 'value'
+        blockcode: '%n - %n'
     },
     operator_multiply: {
-        blockcode: 'value'
+        blockcode: '%n * %n'
     },
     operator_divide: {
-        blockcode: 'value'
+        blockcode: '%n / %n'
     },
     operator_random: {
-        blockcode: 'value'
+        blockcode: 'random %n to %n'
     },
     operator_gt: {
-        blockcode: 'value'
+        blockcode: '%n > %n'
     },
     operator_lt: {
-        blockcode: 'value'
+        blockcode: '%n < %n'
     },
     operator_equals: {
-        blockcode: 'value'
+        blockcode: '%n = %n'
     },
     operator_and: {
-        blockcode: 'value'
+        blockcode: '%b and %b'
     },
     operator_or: {
-        blockcode: 'value'
+        blockcode: '%b or %b'
     },
     operator_not: {
-        blockcode: 'value'
+        blockcode: 'not %b'
     },
     operator_join: {
-        blockcode: 'value'
+        blockcode: 'join %s %s'
     },
     operator_letter_of: {
-        blockcode: 'value'
+        blockcode: 'letter %n of %s'
     },
     operator_length: {
-        blockcode: 'value'
+        blockcode: 'length of %s'
     },
     operator_contains: {
-        blockcode: 'value'
+        blockcode: '%s contains %s ? '
     },
     operator_mod: {
-        blockcode: 'value'
+        blockcode: '%n mod %n'
     },
     operator_round: {
-        blockcode: 'value'
+        blockcode: 'round %n'
     },
     operator_mathop: {
-        blockcode: 'value'
+        blockcode: '%m of %n ::operators'
     },
     undefined: {
-        blockcode: 'value'
+        blockcode: 'undefined'
     },
     data_setvariableto: {
-        blockcode: 'value'
+        blockcode: 'set %m to %s'
     },
     data_changevariableby: {
-        blockcode: 'value'
+        blockcode: 'change %m by %n'
     },
     data_showvariable: {
-        blockcode: 'value'
+        blockcode: 'show variable %m'
     },
     data_hidevariable: {
-        blockcode: 'value'
+        blockcode: 'hide variable %m'
     },
     undefined: {
-        blockcode: 'value'
+        blockcode: 'undefined'
     },
     data_addtolist: {
-        blockcode: 'value'
+        blockcode: 'add %s to %m'
     },
     data_deleteoflist: {
-        blockcode: 'value'
+        blockcode: 'delete %n of %m'
     },
     data_deletealloflist: {
-        blockcode: 'value'
+        blockcode: 'delete all of %m'
     },
     data_insertatlist: {
-        blockcode: 'value'
+        blockcode: 'insert %s at %n of %m'
     },
     data_replaceitemoflist: {
-        blockcode: 'value'
+        blockcode: 'replace item %n of %m with %s'
     },
     data_itemoflist: {
-        blockcode: 'value'
+        blockcode: 'item %n of %m'
     },
     data_itemnumoflist: {
-        blockcode: 'value'
+        blockcode: 'item # of %s in %m'
     },
     data_lengthoflist: {
-        blockcode: 'value'
+        blockcode: 'length of %m'
     },
     data_listcontainsitem: {
-        blockcode: 'value'
+        blockcode: '%m contains %s ? ::lists'
     },
     data_showlist: {
-        blockcode: 'value'
+        blockcode: 'show list %m'
     },
     data_hidelist: {
-        blockcode: 'value'
+        blockcode: 'hide list %m'
     },
 }
