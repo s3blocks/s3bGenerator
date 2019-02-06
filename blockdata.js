@@ -222,7 +222,7 @@
         blockcode: 'volume'
     },
     sensing_touchingobject: {
-        blockcode: 'touching %m ?'
+        blockcode: 'touching %r ?'
     },
     sensing_touchingobjectmenu: {
         blockcode: ''
@@ -234,7 +234,7 @@
         blockcode: 'color %c is touching %c ?'
     },
     sensing_distanceto: {
-        blockcode: 'distance to %m'
+        blockcode: 'distance to %r'
     },
     sensing_distancetomenu: {
         blockcode: ''
