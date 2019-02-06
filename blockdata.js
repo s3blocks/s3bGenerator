@@ -9,7 +9,7 @@
         blockcode: 'turn ccw %n degrees'
     },
     motion_goto: {
-        blockcode: 'go to %m'
+        blockcode: 'go to %r'
     },
     motion_goto_menu: {
         blockcode: ''
@@ -18,7 +18,7 @@
         blockcode: 'go to x: %n y: %n'
     },
     motion_glideto: {
-        blockcode: 'glide %n secs to %m'
+        blockcode: 'glide %n secs to %r'
     },
     motion_glideto_menu: {
         blockcode: ''
@@ -30,7 +30,7 @@
         blockcode: 'point in direction %n'
     },
     motion_pointtowards: {
-        blockcode: 'point towards %m'
+        blockcode: 'point towards %r'
     },
     motion_pointtowards_menu: {
         blockcode: ''
@@ -66,7 +66,7 @@
         blockcode: 'think %s'
     },
     looks_switchcostumeto: {
-        blockcode: 'switch costume to %m'
+        blockcode: 'switch costume to %r'
     },
     looks_costume: {
         blockcode: ''
@@ -75,7 +75,7 @@
         blockcode: 'next costume'
     },
     looks_switchbackdropto: {
-        blockcode: 'switch back to %m'
+        blockcode: 'switch back to %r'
     },
     looks_backdrops: {
         blockcode: ''
@@ -111,13 +111,13 @@
         blockcode: 'go %m %n layers'
     },
     sound_playuntildone: {
-        blockcode: 'play sound %m until done'
+        blockcode: 'play sound %r until done'
     },
     sound_sounds_menu: {
         blockcode: ''
     },
     sound_play: {
-        blockcode: 'start sound %m'
+        blockcode: 'start sound %r'
     },
     sound_sounds_menu: {
         blockcode: ''
@@ -150,7 +150,7 @@
         blockcode: 'when this sprite clicked'
     },
     event_whenbackdropswitchesto: {
-        blockcode: 'when backdrop switches to %m'
+        blockcode: 'when backdrop switches to %r'
     },
     event_whengreaterthan: {
         blockcode: 'when %m > %n'
@@ -159,10 +159,10 @@
         blockcode: 'when i receive %m'
     },
     event_broadcast: {
-        blockcode: 'broadcast %m'
+        blockcode: 'broadcast %r'
     },
     event_broadcastandwait: {
-        blockcode: 'broadcast %m and wait'
+        blockcode: 'broadcast %r and wait'
     },
     control_wait: {
         blockcode: 'wait %n seconds'
