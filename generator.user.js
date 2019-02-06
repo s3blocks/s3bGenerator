@@ -44,7 +44,8 @@
         $(".box-content").html("<pre>" + js_beautify(JSON.stringify(simpleProject)) + "</pre>");
         //$(".box-content").html("<pre>" + derpyList + "</pre>");
         //$(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
-        $(".box-content").html("<pre>" + derpyList + "</pre>");
+        //$(".box-content").html("<pre>" + derpyList + "</pre>");
+        window.open("https://s3blocks.github.io/#" + encodeURI(derpyList))
     });
 
     function getBlocks(blocks) {
@@ -58,7 +59,31 @@
             var thing = blocks[item].opcode;
             //alert(thing);
             if (blockMap.hasOwnProperty(thing)) {
-                derpyList += blockMap[thing].blockcode + "<br>";
+                var blockCode = blockMap[thing].blockcode
+                blockCode = blockCode.split(" ");
+                blockCode.forEach(function(item, index) {
+                    switch (item) {
+                        default:
+                            blockCode[index] = blockCode[index];
+                            break;
+                        case "%n":
+                            blockCode[index] = "()";
+                            break;
+                        case "%s":
+                            blockCode[index] = "[]";
+                            break;
+                        case "%m":
+                            blockCode[index] = "[ v]";
+                            break;
+                        case "%b":
+                            blockCode[index] = "<>";
+                            break;
+                        case "{}":
+                            blockCode[index] = "\nend";
+                            break;
+                    }
+                });
+                derpyList += blockCode.join(" ") + "\n";
             }
         };
         return blockData;
