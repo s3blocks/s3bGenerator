@@ -16,7 +16,15 @@
     //https://projects.scratch.mit.edu/284721167 for all the normal blocks
     var id = getUrlVars()["id"];
     var fullUrl = "https://projects.scratch.mit.edu/" + id;
+    var blockMapUrl = "https://raw.githubusercontent.com/s3blocks/s3bGenerator/master/blockdata.js"
     var derpyList = "";
+    var blockMap;
+    $.ajax({
+        url: blockMapUrl,
+        json: "text"
+    }).done( function (data) {
+        eval("blockMap =" + data + ";");
+    });
     $.ajax({
         url: fullUrl,
         json: "json"
@@ -34,8 +42,9 @@
         $(".box-content").css("text-align", "left");
         $(".box-content").css("padding-left", "50px");
         $(".box-content").html("<pre>" + js_beautify(JSON.stringify(simpleProject)) + "</pre>");
-        $(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
-        //$(".box-content").html("<pre>{<br>" + derpyList + "}</pre>");
+        //$(".box-content").html("<pre>" + derpyList + "</pre>");
+        //$(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
+        $(".box-content").html("<pre>" + derpyList + "</pre>");
     });
 
     function getBlocks(blocks) {
@@ -45,7 +54,12 @@
             blockData.push({
                 opcode: blocks[item].opcode
             });
-            derpyList += blocks[item].opcode + ": {blockcode: 'value'},";
+            //derpyList += "'" + blocks[item].opcode + "': 'value',";
+            var thing = blocks[item].opcode;
+            //alert(thing);
+            if (blockMap.hasOwnProperty(thing)) {
+                derpyList += blockMap[thing].blockcode + "<br>";
+            }
         };
         return blockData;
     }
