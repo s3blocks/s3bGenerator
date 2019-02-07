@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blockify Scratch 3.0
 // @namespace    http://tampermonkey.net/
-// @version      0.3d
+// @version      0.3e
 // @description  try to take over the world!
 // @author       NitroCipher
 // @match        https://scratch.mit.edu/blockify*
@@ -12,8 +12,8 @@
 
 (function() {
     'use strict';
-    //https://projects.scratch.mit.edu/279911751 for general testing
-    //https://projects.scratch.mit.edu/284721167 for all the normal blocks
+    //https://scratch.mit.edu/blockify/?id=279911751 for general testing
+    //https://scratch.mit.edu/blockify/?id=284721167 for all the normal blocks
     var id = getUrlVars()["id"];
     var fullUrl = "https://projects.scratch.mit.edu/" + id;
     var blockMapUrl = "https://raw.githubusercontent.com/s3blocks/s3bGenerator/master/blockdata.js"
@@ -169,9 +169,9 @@
                                 var firstBlock = "\n" + getBlock(allBlocks[subTop[1]], allBlocks);
                                 substack += (getNextOf(allBlocks[subTop[1]], allBlocks, 2, firstBlock));
                                 if (block.opcode == "control_if_else" && input == 1) {
-                                    blockCode[index] = "\n" + substack + "\n";
+                                    blockCode[index] = substack + "\n";
                                 } else {
-                                    blockCode[index] = "\n" + substack + "\nend";
+                                    blockCode[index] = substack + "\nend";
                                 }
                             } else {
                                 if (block.opcode == "control_if_else" && input == 1) {
