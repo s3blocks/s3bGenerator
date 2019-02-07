@@ -82,7 +82,7 @@
                 //console.log(substack);
                 //console.log(block);
                 var newString = string += "\n" + blockChild
-                console.log(newString)
+                //console.log(newString)
                 return (getNextOf(allBlocks[block.next], allBlocks, output, newString));
             } else {
                 //console.log(derpyList);
@@ -134,8 +134,8 @@
                         break;
                     case "{}":
                         var subTop = block.inputs[ Object.keys(block.inputs)[input] ];
-                        substack += "\n" + getBlock(allBlocks[subTop[1]], allBlocks);
-                        substack += (getNextOf(allBlocks[subTop[1]], allBlocks, 2, substack));
+                        var firstBlock = "\n" + getBlock(allBlocks[subTop[1]], allBlocks);
+                        substack += (getNextOf(allBlocks[subTop[1]], allBlocks, 2, firstBlock));
                         blockCode[index] = substack + "\nend";
                         break;
                 }
