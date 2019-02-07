@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blockify Scratch 3.0
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.3a
 // @description  try to take over the world!
 // @author       NitroCipher
 // @match        https://scratch.mit.edu/blockify*
@@ -47,7 +47,7 @@
         //$(".box-content").html("<pre>" + derpyList + "</pre>");
         //$(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
         $(".box-content").html("<pre>" + derpyList + "</pre>");
-        //window.open("https://s3blocks.github.io/#" + encodeURI(derpyList))
+        window.location.replace("https://s3blocks.github.io/#" + encodeURI(derpyList))
     });
 
     function getAllBlocks(blocks) {
