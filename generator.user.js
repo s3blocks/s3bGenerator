@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blockify Scratch 3.0
 // @namespace    http://tampermonkey.net/
-// @version      0.3a
+// @version      0.3d
 // @description  try to take over the world!
 // @author       NitroCipher
 // @match        https://scratch.mit.edu/blockify*
@@ -32,13 +32,15 @@
     }).done( function (data) {
         var project = JSON.parse(data);
         //document.write(JSON.stringify(project.targets[1].blocks));
-        let simpleProject = {
-            sources: project.targets.map((stuff, index) => {
-                return {
-                    name: stuff["name"],
-                    blocks: getAllBlocks(stuff["blocks"]),
-                }
-            })
+        if (getUrlVars()["json"] !== "true") {
+            let simpleProject = {
+                sources: project.targets.map((stuff, index) => {
+                    return {
+                        name: stuff["name"],
+                        blocks: getAllBlocks(stuff["blocks"]),
+                    }
+                })
+            }
         }
         $(".box-content").css("text-align", "left");
         $(".box-content").css("padding-left", "50px");
@@ -46,8 +48,10 @@
         $(".box-content").html("<pre>" + js_beautify(JSON.stringify(project)) + "<pre>");
         //$(".box-content").html("<pre>" + derpyList + "</pre>");
         //$(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
-        $(".box-content").html("<pre>" + derpyList + "</pre>");
-        window.location.replace("https://s3blocks.github.io/#" + encodeURI(derpyList))
+        if (getUrlVars()["json"] !== "true") {
+            $(".box-content").html("<pre>" + derpyList + "</pre>");
+            window.open("https://s3blocks.github.io/#" + encodeURI(derpyList))
+        }
     });
 
     function getAllBlocks(blocks) {
@@ -102,41 +106,88 @@
             blockCode = blockCode.split(" ");
             var input = 0;
             var field = 0;
+            //alert(Object.keys(block.inputs).length + ": " + block.opcode + ": " + blockCode); //debug
             blockCode.forEach(function(item, index) {
                 var substack = "";
+                //alert((Object.keys(block.inputs).length > input) + ": " + block.opcode + ": " + blockCode);
                 switch (item) {
                     default:
                         blockCode[index] = blockCode[index];
                         break;
                     case "%n":
-                        blockCode[index] = "(" +block.inputs[ Object.keys(block.inputs)[input] ][1][1]+ ")";
+                        if (Object.keys(block.inputs).length > input) {
+                            blockCode[index] = "(" +block.inputs[ Object.keys(block.inputs)[input] ][1][1]+ ")";
+                        } else {
+                            blockCode[index] = "()";
+                        }
                         input++;
                         break;
                     case "%c":
+                        if (Object.keys(block.inputs).length > input) {
                         blockCode[index] = "[" +block.inputs[ Object.keys(block.inputs)[input] ][1][1]+ "]";
+                        } else {
+                            blockCode[index] = "[#FF00FF]"
+                        }
                         input++;
                         break;
                     case "%s":
-                        blockCode[index] = "[" +block.inputs[ Object.keys(block.inputs)[input] ][1][1]+ "]";
+                        if (Object.keys(block.inputs).length > input) {
+                            blockCode[index] = "[" +block.inputs[ Object.keys(block.inputs)[input] ][1][1]+ "]";
+                        } else {
+                            blockCode[index] = "[]";
+                        }
                         input++;
                         break;
                     case "%r":
-                        blockCode[index] = "(" +block.inputs[ Object.keys(block.inputs)[input] ][0]+ " v)";
+                        if (Object.keys(block.inputs).length > input) {
+                            blockCode[index] = "(" +block.inputs[ Object.keys(block.inputs)[input] ][0]+ " v)";
+                        } else {
+                            blockCode[index] = "( v)";
+                        }
                         input++;
                         break;
                     case "%m":
-                        blockCode[index] = "[" +block.fields[ Object.keys(block.fields)[field] ][0]+ " v]";
+                        if (Object.keys(block.fields).length >= field) {
+                            blockCode[index] = "[" +block.fields[ Object.keys(block.fields)[field] ][0]+ " v]";
+                        } else {
+                            blockCode[index] = "[ v]";
+                        }
                         field++;
                         break;
                     case "%b":
-                        blockCode[index] = "<>";
+                        if (Object.keys(block.inputs).length > input) {
+                            blockCode[index] = "<>";
+                        } else {
+                            blockCode[index] = "<>";
+                        }
                         input++
                         break;
                     case "{}":
-                        var subTop = block.inputs[ Object.keys(block.inputs)[input] ];
-                        var firstBlock = "\n" + getBlock(allBlocks[subTop[1]], allBlocks);
-                        substack += (getNextOf(allBlocks[subTop[1]], allBlocks, 2, firstBlock));
-                        blockCode[index] = substack + "\nend";
+                        if (Object.keys(block.inputs).length > input) {
+                            var subTop = block.inputs[ Object.keys(block.inputs)[input] ];
+                            if (subTop[1] !== null) {
+                                var firstBlock = "\n" + getBlock(allBlocks[subTop[1]], allBlocks);
+                                substack += (getNextOf(allBlocks[subTop[1]], allBlocks, 2, firstBlock));
+                                if (block.opcode == "control_if_else" && input == 1) {
+                                    blockCode[index] = "\n" + substack + "\n";
+                                } else {
+                                    blockCode[index] = "\n" + substack + "\nend";
+                                }
+                            } else {
+                                if (block.opcode == "control_if_else" && input == 1) {
+                                    blockCode[index] = "\n" + substack + "\n";
+                                } else {
+                                    blockCode[index] = substack + "\nend";
+                                }
+                            }
+                        } else {
+                            if (block.opcode == "control_if_else" && input == 1) {
+                                blockCode[index] = "\n" + substack + "\n";
+                            } else {
+                                blockCode[index] = substack + "\nend";
+                            }
+                        }
+                        input++
                         break;
                 }
 
