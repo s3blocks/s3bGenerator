@@ -246,10 +246,10 @@
         blockcode: 'answer'
     },
     sensing_keypressed: {
-        blockcode: ''
+        blockcode: 'key %m pressed?'
     },
     sensing_keyoptions: {
-        blockcode: 'key %m pressed?'
+        blockcode: ''
     },
     sensing_mousedown: {
         blockcode: 'mouse down?'
