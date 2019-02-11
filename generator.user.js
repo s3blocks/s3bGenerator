@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blockify Scratch 3.0
 // @namespace    http://tampermonkey.net/
-// @version      0.3e
+// @version      0.3f
 // @description  try to take over the world!
 // @author       NitroCipher
 // @match        https://scratch.mit.edu/blockify*
@@ -42,15 +42,19 @@
                 })
             }
         }
-        $(".box-content").css("text-align", "left");
-        $(".box-content").css("padding-left", "50px");
-        //$(".box-content").html("<pre>" + js_beautify(JSON.stringify(simpleProject)) + "</pre>");
-        $(".box-content").html("<pre>" + js_beautify(JSON.stringify(project)) + "<pre>");
-        //$(".box-content").html("<pre>" + derpyList + "</pre>");
-        //$(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
-        if (getUrlVars()["json"] !== "true") {
-            $(".box-content").html("<pre>" + derpyList + "</pre>");
-            window.open("https://s3blocks.github.io/#" + encodeURI(derpyList))
+        if (document.isHome == "true") {
+            codeMirror.setValue(derpyList);
+        } else {
+            $(".box-content").css("text-align", "left");
+            $(".box-content").css("padding-left", "50px");
+            //$(".box-content").html("<pre>" + js_beautify(JSON.stringify(simpleProject)) + "</pre>");
+            $(".box-content").html("<pre>" + js_beautify(JSON.stringify(project)) + "<pre>");
+            //$(".box-content").html("<pre>" + derpyList + "</pre>");
+            //$(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
+            if (getUrlVars()["json"] !== "true") {
+                $(".box-content").html("<pre>" + derpyList + "</pre>");
+                window.open("https://s3blocks.github.io/#" + encodeURI(derpyList))
+            }
         }
     });
 
