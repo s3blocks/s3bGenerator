@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blockify Scratch 3.0
 // @namespace    http://tampermonkey.net/
-// @version      0.3f
+// @version      0.3g
 // @description  try to take over the world!
 // @author       NitroCipher
 // @match        https://scratch.mit.edu/blockify*
@@ -14,7 +14,7 @@
     'use strict';
     //https://scratch.mit.edu/blockify/?id=279911751 for general testing
     //https://scratch.mit.edu/blockify/?id=284721167 for all the normal blocks
-    var id = getUrlVars()["id"];
+    var id = getUrlVars()["id"].replace(/^\/|\/$/g, '');
     var fullUrl = "https://projects.scratch.mit.edu/" + id;
     var blockMapUrl = "https://raw.githubusercontent.com/s3blocks/s3bGenerator/master/blockdata.js"
     var derpyList = "";
