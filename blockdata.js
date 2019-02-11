@@ -249,7 +249,7 @@
         blockcode: 'key %r pressed?'
     },
     sensing_keyoptions: {
-        blockcode: ''
+        blockcode: '%m'
     },
     sensing_mousedown: {
         blockcode: 'mouse down?'
