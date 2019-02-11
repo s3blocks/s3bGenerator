@@ -246,7 +246,7 @@
         blockcode: 'answer'
     },
     sensing_keypressed: {
-        blockcode: 'key %m pressed?'
+        blockcode: 'key %r pressed?'
     },
     sensing_keyoptions: {
         blockcode: ''
