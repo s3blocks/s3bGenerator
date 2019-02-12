@@ -105,7 +105,7 @@
         blockcode: 'hide'
     },
     looks_gotofrontback: {
-        blockcode: 'go to %m layer'
+        blockcode: 'go to %m layer ::looks'
     },
     looks_goforwardbackwardlayers: {
         blockcode: 'go %m %n layers'
@@ -117,7 +117,7 @@
         blockcode: ''
     },
     sound_play: {
-        blockcode: 'start sound %r'
+        blockcode: 'start sound %r ::sound'
     },
     sound_sounds_menu: {
         blockcode: ''
@@ -210,10 +210,10 @@
         blockcode: 'direction'
     },
     looks_costumenumbername: {
-        blockcode: 'costume %m'
+        blockcode: 'costume %m ::looks'
     },
     looks_backdropnumbername: {
-        blockcode: 'backdrop %m'
+        blockcode: 'backdrop %m ::looks'
     },
     looks_size: {
         blockcode: 'size'
@@ -273,7 +273,7 @@
         blockcode: 'reset timer'
     },
     sensing_of: {
-        blockcode: '%m of %r :sensing'
+        blockcode: '%m of %r ::sensing'
     },
     sensing_of_object_menu: {
         blockcode: ''
@@ -300,7 +300,7 @@
         blockcode: '%n / %n'
     },
     operator_random: {
-        blockcode: 'random %n to %n'
+        blockcode: 'pick random %n to %n'
     },
     operator_gt: {
         blockcode: '%n > %n'
