@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blockify Scratch 3.0
 // @namespace    http://tampermonkey.net/
-// @version      0.4b
+// @version      0.4c
 // @description  try to take over the world!
 // @author       NitroCipher
 // @match        https://scratch.mit.edu/blockify*
@@ -122,8 +122,8 @@
                         if (Object.keys(block.inputs).length > input) {
                             var condition = block.inputs[ Object.keys(block.inputs)[input] ];
                             if (condition[1] !== null) {
-                                if (allBlocks.hasOwnProperty(condition[1][1])) {
-                                    blockCode[index] = "(" +getBlock(allBlocks[condition[1][1]], allBlocks, 1) + ")";
+                                if (allBlocks.hasOwnProperty(condition[1])) {
+                                    blockCode[index] = "(" +getBlock(allBlocks[condition[1]], allBlocks, 1) + ")";
                                 } else {
                                     blockCode[index] = "(" + condition[1][1] + ")"
                                 }
@@ -147,7 +147,7 @@
                         if (Object.keys(block.inputs).length > input) {
                             var condition = block.inputs[ Object.keys(block.inputs)[input] ];
                             if (condition[1] !== null) {
-                                if (condition[1][0] == 3) {
+                                if (allBlocks.hasOwnProperty(condition[1])) {
                                     blockCode[index] = "(" + getBlock(allBlocks[condition[1]], allBlocks, 1) + ")";
                                 } else {
                                     blockCode[index] = "[" + condition[1][1] + "]"
