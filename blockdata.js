@@ -75,7 +75,7 @@
         blockcode: 'next costume'
     },
     looks_switchbackdropto: {
-        blockcode: 'switch back to %r'
+        blockcode: 'switch backdrop to %r ::looks'
     },
     looks_backdrops: {
         blockcode: ''
