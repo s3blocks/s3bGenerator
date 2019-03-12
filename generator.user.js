@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blockify Scratch 3.0
 // @namespace    http://tampermonkey.net/
-// @version      0.4c
+// @version      0.5a
 // @description  try to take over the world!
 // @author       NitroCipher
 // @match        https://scratch.mit.edu/blockify*
@@ -53,7 +53,7 @@
             //$(".box-content").html("<pre>" + js_beautify("{" + derpyList + "}") + "</pre>");
             if (getUrlVars()["json"] !== "true") {
                 $(".box-content").html("<pre>" + derpyList + "</pre>");
-                window.open("https://s3blocks.github.io/#" + encodeURI(derpyList))
+               // window.open("https://s3blocks.github.io/#" + encodeURI(derpyList))
             }
         }
     });
@@ -165,6 +165,7 @@
                             var condition = block.inputs[ Object.keys(block.inputs)[input] ];
                             if (condition[1] !== null) {
                                 if (block.opcode == "sensing_keypressed") {
+                                    //alert('do i fire? ' + getBlock(allBlocks[condition[1]], allBlocks, 1));
                                     blockCode[index] = getBlock(allBlocks[condition[1]], allBlocks, 1);
                                 } else {
                                     blockCode[index] = "(" + condition[0] + " v)"
@@ -189,14 +190,18 @@
                         if (Object.keys(block.inputs).length > input) {
                             var condition = block.inputs[ Object.keys(block.inputs)[input] ];
                             if (condition[1] !== null) {
-                                blockCode[index] = "<" + getBlock(allBlocks[condition[1]], allBlocks, 1) + ">";
+                                if (allBlocks.hasOwnProperty(condition[1])) {
+                                    blockCode[index] = "<" +getBlock(allBlocks[condition[1]], allBlocks, 1) + ">";
+                                } else {
+                                    blockCode[index] = "<" + condition[1][1] + ">"
+                                }
                             } else {
                                 blockCode[index] = "<>";
                             }
                         } else {
                             blockCode[index] = "<>";
                         }
-                        input++
+                        input++;
                         break;
                     case "{}":
                         if (Object.keys(block.inputs).length > input) {
@@ -230,7 +235,22 @@
             });
             //derpyList += blockCode.join(" ") + "\n";
             //console.log(blockCode.join(" "));
+            if (block.opcode == "sensing_keypressed") {
+                return blockCode.join(" ");
+            }
             return blockCode.join(" ");
+        } else if (block.opcode == "procedures_definition"){
+            var condition = block.inputs.custom_block[1];
+            //return block.opcode + ": " + condition;
+            return getBlock(allBlocks[condition], allBlocks, 1)
+        } else if (block.opcode == "procedures_prototype"){
+            var condition = block.mutation.proccode;
+            //return block.opcode + ": " + condition;
+            return "define " + condition;
+        } else if (block.opcode == "procedures_call"){
+            var condition = block.mutation.proccode;
+            //return block.opcode + ": " + condition;
+            return condition;
         } else {
             return block.opcode;
         }
