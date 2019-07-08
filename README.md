@@ -13,6 +13,7 @@ For testing purposes or development:
 
 If you want to play around with it in your browser:
 1. Go to ```https://s3blocks.github.io/generator/?id=279911751``` (or use another project id)
+1.1 reload - if the result is blank, pressing reload on the browser maybe required. 
 2. It should convert the available block data to s3blocks, and display it right on the page!
 
 ## Notes/To-do
